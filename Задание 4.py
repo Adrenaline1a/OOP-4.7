@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from tkinter import Tk, Text, Button, Entry, END, filedialog
 
-from tkinter import *
 
-
-def save(event):
-    name = ent.get()
+def save():
+    name = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=(("Текстовый файл", "*.txt"),))
     data = text.get(1.0, END)
     with open(name, 'w', encoding="utf-8") as f:
         f.write(data)
 
 
-def opening(event):
+def opening():
     text.delete(1.0, END)
-    name = ent.get()
+    name = filedialog.askopenfilename()
     with open(name, 'r', encoding="utf-8") as f:
         data = f.read()
     text.insert(1.0, data)
@@ -22,12 +21,10 @@ def opening(event):
 
 if __name__ == '__main__':
     root = Tk()
-    text = Text(width=25, height=5,)
+    text = Text(width=100, height=80,)
     ent = Entry(width=20)
-    but1 = Button(text='Открыть', width=5, pady=5)
-    but2 = Button(text='Сохранить', width=5, pady=5)
-    but1.bind('<Button-1>', opening)
-    but2.bind('<Button-1>', save)
+    but1 = Button(text='Открыть', width=10, pady=5, command=opening)
+    but2 = Button(text='Сохранить', width=10, pady=5, command=save)
     ent.pack()
     but1.pack()
     but2.pack()

@@ -39,6 +39,8 @@ def dele(event):
         l1['text'] = s1/s2
     except ValueError:
         l1['text'] = 'Ошибка'
+    except ZeroDivisionError:
+        l1['text'] = 'Деление на 0!'
 
 
 if __name__ == '__main__':

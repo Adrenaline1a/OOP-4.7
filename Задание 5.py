@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
-from tkinter import *
+from tkinter import Tk, IntVar, Radiobutton, Label
 
 
 def name():
@@ -19,6 +18,7 @@ def adress():
 
 if __name__ == '__main__':
     root = Tk()
+    root.title('ИВТ-б-о-20-1')
     var = IntVar()
     var.set(-1)
     Radiobutton(indicatoron=0, text="Имя", command=name,
